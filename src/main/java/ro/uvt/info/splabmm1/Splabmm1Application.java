@@ -11,4 +11,5 @@ public class Splabmm1Application {
         SpringApplication.run(Splabmm1Application.class, args);
     }
 
+
 }

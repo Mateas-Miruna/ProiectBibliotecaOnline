@@ -1,10 +1,18 @@
 package ro.uvt.info.splabmm1;
 
+import lombok.Getter;
+
+@Getter
 public class Author {
     private String nume;
 
-    // Constructor, getteri și setteri
-    // ...
+    public Author(String nume) {
+        this.nume = nume;
+    }
+
+    public void setNume(String nume) {
+        this.nume = nume;
+    }
 
     public void print() {
         System.out.println("Autor: " + nume);
