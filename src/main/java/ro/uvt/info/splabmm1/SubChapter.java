@@ -1,6 +1,6 @@
 package ro.uvt.info.splabmm1;
 
-public class SubChapter {
+/*public class SubChapter {
     private String name;
     private Image image;
     private Paragraph paragraph;
@@ -58,6 +58,25 @@ public class SubChapter {
         }
         if (table != null) {
             table.print();
+        }
+    }
+}*/
+public class SubChapter extends BookComponent {
+    private String name;
+    private List<BookComponent> subComponents = new ArrayList<>();
+
+    public SubChapter(String name) {
+        this.name = name;
+    }
+
+    public void add(BookComponent component) {
+        subComponents.add(component);
+    }
+
+    public void print() {
+        System.out.println("SubChapter: " + name);
+        for (BookComponent component : subComponents) {
+            component.print();
         }
     }
 }

@@ -1,6 +1,6 @@
 package ro.uvt.info.splabmm1;
 
-public class Paragraph {
+/*public class Paragraph {
     private String text;
     public Paragraph(String text) {
         this.text = text;
@@ -16,6 +16,17 @@ public class Paragraph {
 
     public void print() {
         System.out.println("Paragraf: " + text);
+    }
+}*/
+public class Paragraph extends BookComponent {
+    private String text;
+
+    public Paragraph(String text) {
+        this.text = text;
+    }
+
+    public void print() {
+        System.out.println("Paragraph: " + text);
     }
 }
 

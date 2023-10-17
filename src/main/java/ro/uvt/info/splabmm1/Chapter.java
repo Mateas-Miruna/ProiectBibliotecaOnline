@@ -1,6 +1,6 @@
 package ro.uvt.info.splabmm1;
 import java.util.List;
-public class Chapter {
+/*public class Chapter {
     private String name;
     private List<SubChapter> subChapters;
     public Chapter(String name, List<SubChapter> subChapters) {
@@ -30,6 +30,25 @@ public class Chapter {
 
         for (SubChapter subChapter : subChapters) {
             subChapter.print();
+        }
+    }
+}*/
+public class Chapter extends BookComponent {
+    private String name;
+    private List<BookComponent> subComponents = new ArrayList<>();
+
+    public Chapter(String name) {
+        this.name = name;
+    }
+
+    public void add(BookComponent component) {
+        subComponents.add(component);
+    }
+
+    public void print() {
+        System.out.println("Chapter: " + name);
+        for (BookComponent component : subComponents) {
+            component.print();
         }
     }
 }

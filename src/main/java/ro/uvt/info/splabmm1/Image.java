@@ -1,6 +1,6 @@
 package ro.uvt.info.splabmm1;
 
-public class Image {
+/*public class Image {
     private String imageName;
     public Image(String imageName) {
         this.imageName = imageName;
@@ -18,6 +18,17 @@ public class Image {
 
     public void print() {
         System.out.println("Imagine: " + imageName);
+    }
+}*/
+public class Image extends BookComponent {
+    private String imageName;
+
+    public Image(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public void print() {
+        System.out.println("Image: " + imageName);
     }
 }
 
