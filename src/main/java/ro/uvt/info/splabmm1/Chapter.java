@@ -1,55 +1,33 @@
 package ro.uvt.info.splabmm1;
+import java.util.ArrayList;
 import java.util.List;
-/*public class Chapter {
+
+public class Chapter {
     private String name;
-    private List<SubChapter> subChapters;
-    public Chapter(String name, List<SubChapter> subChapters) {
+
+    private List<Subchapter> subchapterList;
+
+    public Chapter(String name, List<Subchapter> subchapters){
+        this.name=name;
+        subchapterList = subchapters;
+    }
+
+    public Chapter(String name){
         this.name = name;
-        this.subChapters = subChapters;
+        subchapterList = null;
+    }
+    public void print(){
+        System.out.println("Chapter name: " + name);
     }
 
-    public String getName() {
-        return name;
+    public int createSubChapter(String title) {
+        if(subchapterList == null)
+            subchapterList = new ArrayList<Subchapter>();
+        subchapterList.add(new Subchapter(title));
+        return subchapterList.size();
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    // Getter și setter pentru subChapters
-    public List<SubChapter> getSubChapters() {
-        return subChapters;
-    }
-
-    public void setSubChapters(List<SubChapter> subChapters) {
-        this.subChapters = subChapters;
-    }
-
-    public void print() {
-        System.out.println("Capitol: " + name);
-
-        for (SubChapter subChapter : subChapters) {
-            subChapter.print();
-        }
-    }
-}*/
-public class Chapter extends BookComponent {
-    private String name;
-    private List<BookComponent> subComponents = new ArrayList<>();
-
-    public Chapter(String name) {
-        this.name = name;
-    }
-
-    public void add(BookComponent component) {
-        subComponents.add(component);
-    }
-
-    public void print() {
-        System.out.println("Chapter: " + name);
-        for (BookComponent component : subComponents) {
-            component.print();
-        }
+    public Subchapter getSubChapter(int index) {
+        return subchapterList.get(index - 1);
     }
 }
-

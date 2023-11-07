@@ -1,57 +1,55 @@
 package ro.uvt.info.splabmm1;
-import lombok.Getter;
 
+import java.util.ArrayList;
 import java.util.List;
-public class Book {
-        @Getter
-        private String title;
-        private Author autor;
-    public Book(String title, Author autor, TableOfContents tableOfContents, List<Chapter> chapters) {
+
+public class Book{
+    private String title;
+
+    private List<Element> sections;
+    private List<Author> authors;
+
+    public Book(String title, List<Element> sections){
         this.title = title;
-        this.autor = autor;
-        this.tableOfContents = tableOfContents;
-        this.chapters = chapters;
-    }
-    // Getter și setter pentru tableOfContents
-    @Getter
-    private TableOfContents tableOfContents;
-    // Getter și setter pentru chapters
-    @Getter
-    private List<Chapter> chapters;
 
-    public Book(String title) {
-        this.title = title;
+        this.sections = sections;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void addAuthor(Author a){
+        authors.add(a);
     }
 
-    // Getter și setter pentru autor
-    public Author getAutor() {
-        return autor;
+    public Book(String title){
+        this.title =  title;
+        authors = new ArrayList<Author>();
+        sections = null;
     }
 
-    public void setAutor(Author autor) {
-        this.autor = autor;
-    }
-
-    public void setTableOfContents(TableOfContents tableOfContents) {
-        this.tableOfContents = tableOfContents;
-    }
-
-    public void setChapters(List<Chapter> chapters) {
-        this.chapters = chapters;
-    }
-        public void print() {
-            //System.out.println("Carte: " + title);
-            //System.out.println("Autor: " + autor.getNume());
-            tableOfContents.print();
-
-            for (Chapter chapter : chapters) {
-                chapter.print();
-
+    public int createSection(String ChapterTitle){
+        if (sections == null){
+            sections = new ArrayList<Element>();
         }
+        Section newSection = new Section("ChapterTitle");
+        sections.add(newSection);
+        return sections.size();
     }
 
+    public void print(){
+        System.out.println("Book: " + title);
+        System.out.println("\nAuthors: ");
+        for(Author a: authors)
+            a.print();
+        System.out.println();
+        for(Element e:sections)
+            e.print();
+    }
+
+    public Element getSection(int index) {
+        return sections.get(index - 1);
+    }
+
+    public void addContent(Element paragraph) {
+        if(sections == null) sections = new ArrayList<Element>();
+        sections.add(paragraph);
+    }
 }

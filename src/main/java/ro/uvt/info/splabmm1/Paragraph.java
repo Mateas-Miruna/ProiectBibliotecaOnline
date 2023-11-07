@@ -1,32 +1,39 @@
 package ro.uvt.info.splabmm1;
 
-/*public class Paragraph {
-    private String text;
-    public Paragraph(String text) {
-        this.text = text;
+public class Paragraph implements Element{
+    private String name;
+    private AlignStrategy align;
+    public Paragraph(String name){
+        this.name = name;
+        align = new AlignLeft();
     }
 
-    public String getText() {
-        return text;
+    @Override
+    public void print(){
+        if(align == null)
+            System.out.println("Paragraph: " + name);
+        else
+            align.render(name);
     }
 
-    public void setText(String text) {
-        this.text = text;
+
+    @Override
+    public void add(Element e) {
+        throw new UnsupportedOperationException();
     }
 
-    public void print() {
-        System.out.println("Paragraf: " + text);
-    }
-}*/
-public class Paragraph extends BookComponent {
-    private String text;
-
-    public Paragraph(String text) {
-        this.text = text;
+    @Override
+    public void removeElement(Element e) {
+        throw new UnsupportedOperationException();
     }
 
-    public void print() {
-        System.out.println("Paragraph: " + text);
+    @Override
+    public Element get(int i) {
+        throw new UnsupportedOperationException();
+    }
+
+
+    public void setAlignStrategy(AlignStrategy align) {
+        this.align = align;
     }
 }
-

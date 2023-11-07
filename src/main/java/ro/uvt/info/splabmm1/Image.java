@@ -1,34 +1,41 @@
 package ro.uvt.info.splabmm1;
 
-/*public class Image {
-    private String imageName;
-    public Image(String imageName) {
-        this.imageName = imageName;
+import java.util.concurrent.TimeUnit;
+
+public class Image implements Element{
+
+    private String imagename;
+
+    Image(String imagename){
+        this.imagename = imagename;
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 
-    // Getter și setter pentru imageName
-    public String getImageName() {
-        return imageName;
+
+
+
+    @Override
+    public void print(){
+        System.out.println("Image with name: " + imagename);
     }
 
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
+    @Override
+    public void add(Element e) {
+        throw new UnsupportedOperationException();
     }
 
-    public void print() {
-        System.out.println("Imagine: " + imageName);
-    }
-}*/
-public class Image extends BookComponent {
-    private String imageName;
-
-    public Image(String imageName) {
-        this.imageName = imageName;
+    @Override
+    public void removeElement(Element e) {
+        throw new UnsupportedOperationException();
     }
 
-    public void print() {
-        System.out.println("Image: " + imageName);
+    @Override
+    public Element get(int i) {
+        throw new UnsupportedOperationException();
     }
 }
-

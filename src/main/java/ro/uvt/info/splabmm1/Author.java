@@ -2,19 +2,14 @@ package ro.uvt.info.splabmm1;
 
 import lombok.Getter;
 
-@Getter
 public class Author {
-    private String nume;
+    String name;
 
-    public Author(String nume) {
-        this.nume = nume;
+    public Author(String name) {
+        this.name = name;
     }
 
-    public void setNume(String nume) {
-        this.nume = nume;
-    }
-
-    public void print() {
-        System.out.println("Autor: " + nume);
+    public void print(){
+        System.out.println("Author: " + name);
     }
 }

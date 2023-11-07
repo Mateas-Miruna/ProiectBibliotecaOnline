@@ -1,32 +1,28 @@
 package ro.uvt.info.splabmm1;
 
-/*public class Table {
-    private String title;
-    public Table(String title) {
-        this.title = title;
+public class Table implements Element{
+    private String name;
+    public Table(String name){
+        this.name = name;
     }
 
-
-    public String getTitle() {
-        return title;
+    @Override
+    public void print(){
+        System.out.println("Table name: " + name);
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    @Override
+    public void add(Element e) {
+        throw new UnsupportedOperationException();
     }
 
-    public void print() {
-        System.out.println("Tabel: " + title);
-    }
-}*/
-public class Table extends BookComponent {
-    private String title;
-
-    public Table(String title) {
-        this.title = title;
+    @Override
+    public void removeElement(Element e) {
+        throw new UnsupportedOperationException();
     }
 
-    public void print() {
-        System.out.println("Table: " + title);
+    @Override
+    public Element get(int i) {
+        throw new UnsupportedOperationException();
     }
 }
