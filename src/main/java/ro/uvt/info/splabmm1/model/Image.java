@@ -1,26 +1,27 @@
-package ro.uvt.info.splabmm1;
+package ro.uvt.info.splabmm1.model;
 
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
-public class ImageProxy implements Element{
+public class Image implements Element {
+
     private String imagename;
-    private Image realImage= null;
 
-    public ImageProxy(String imagename) {
+    public Image(String imagename){
         this.imagename = imagename;
-    }
-
-    private void loadRealImage() {
-        if (Objects.isNull(realImage)) {
-            realImage = new Image(this.imagename);
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
+
+
+
+
     @Override
-    public void print() {
-        loadRealImage();
-        realImage.print();
+    public void print(){
+        System.out.println("Image with name: " + imagename);
     }
 
     @Override

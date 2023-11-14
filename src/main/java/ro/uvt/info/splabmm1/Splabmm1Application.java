@@ -1,9 +1,12 @@
 package ro.uvt.info.splabmm1;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import ro.uvt.info.splabmm1.model.Book;
+import ro.uvt.info.splabmm1.model.Image;
+import ro.uvt.info.splabmm1.model.Section;
+
 @SpringBootApplication
 public class Splabmm1Application {
 

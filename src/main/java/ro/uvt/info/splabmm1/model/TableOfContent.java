@@ -1,6 +1,6 @@
-package ro.uvt.info.splabmm1;
+package ro.uvt.info.splabmm1.model;
 
-public class TableOfContent implements Element{
+public class TableOfContent implements Element {
     public void print(){
         System.out.println("Sample");
     }

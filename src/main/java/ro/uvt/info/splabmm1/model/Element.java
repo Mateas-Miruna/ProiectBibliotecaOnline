@@ -1,4 +1,4 @@
-package ro.uvt.info.splabmm1;
+package ro.uvt.info.splabmm1.model;
 
 public interface Element {
     void print();

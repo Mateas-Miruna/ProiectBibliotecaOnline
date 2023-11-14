@@ -1,6 +1,6 @@
-package ro.uvt.info.splabmm1;
+package ro.uvt.info.splabmm1.service;
 
-public class AlignCenter implements AlignStrategy{
+public class AlignCenter implements AlignStrategy {
 
     @Override
     public void render(String text) {
