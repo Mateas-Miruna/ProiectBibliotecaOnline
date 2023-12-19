@@ -2,34 +2,40 @@ package ro.uvt.info.splabmm1.model;
 
 import java.util.ArrayList;
 import java.util.List;
+public class Section implements Element, Visitee {
 
-public class Section implements Element {
-    private String title;
-    private List<Element> children = new ArrayList<>();
+    private String name;
+    private List<Element> content = new ArrayList<>();
 
-    public Section(String title) {
-        this.title = title;
+    public Section(String name) {
+        this.name = name;
     }
 
     @Override
-    public void print(){
-        System.out.println(title);
-        for(Element e:children)
-            e.print();
+    public void add(Element elm) {
+        content.add(elm);
     }
 
     @Override
-    public void add(Element e){
-        children.add(e);
+    public void remove(Element elm) {
+        content.remove(elm);
     }
 
     @Override
-    public void removeElement(Element e){
-        children.remove(e);
+    public Element getElement(int index) {
+        return content.get(index);
     }
 
     @Override
-    public Element get(int i){
-        return children.get(i);
+    public void accept(Visitor visitor) {
+        visitor.visitSection(this);
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public List<Element> getContent() {
+        return this.content;
     }
 }

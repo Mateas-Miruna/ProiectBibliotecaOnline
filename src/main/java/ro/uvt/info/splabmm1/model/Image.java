@@ -1,13 +1,17 @@
 package ro.uvt.info.splabmm1.model;
 
+import lombok.Getter;
+
+import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
-public class Image implements Element {
+@Getter
+public class Image implements Element, Picture, Visitee {
 
-    private String imagename;
+    private final String imageName;
 
-    public Image(String imagename){
-        this.imagename = imagename;
+    public Image(String name) {
+        imageName = name;
         try {
             TimeUnit.SECONDS.sleep(5);
         } catch (InterruptedException e) {
@@ -15,27 +19,18 @@ public class Image implements Element {
         }
     }
 
-
-
-
-
     @Override
-    public void print(){
-        System.out.println("Image with name: " + imagename);
+    public String url() {
+        return imageName;
     }
 
     @Override
-    public void add(Element e) {
-        throw new UnsupportedOperationException();
+    public Dimension dim() {
+        return new Dimension(100, 100);
+    }
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitImage(this);
     }
 
-    @Override
-    public void removeElement(Element e) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public Element get(int i) {
-        throw new UnsupportedOperationException();
-    }
 }

@@ -1,7 +1,6 @@
 package ro.uvt.info.splabmm1.difexample;
 
-import
-        org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 @Component
@@ -11,8 +10,7 @@ public class TransientComponent {
         System.out.println("TransientComponent::TransientComponent = " + this);
     }
     public void operation() {
-        System.out.println("Invoked TransientComponent::operation() on" + this);
-
+        System.out.println("Invoked TransientComponent::operation() on " + this);
 
     }
 }

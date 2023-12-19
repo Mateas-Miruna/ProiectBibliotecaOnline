@@ -1,6 +1,6 @@
 package ro.uvt.info.splabmm1;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+/*import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 import ro.uvt.info.splabmm1.model.Book;
@@ -47,4 +47,4 @@ public class Splabmm1Application {
 
 
 
-}
+}*/

@@ -1,21 +1,9 @@
 package ro.uvt.info.splabmm1.model;
 
-public class TableOfContent implements Element {
-    public void print(){
-        System.out.println("Sample");
-    }
-    @Override
-    public void add(Element e){
-        throw new UnsupportedOperationException();
-    }
+class TableOfContent implements Visitee, Element {
 
     @Override
-    public void removeElement(Element e){
-        throw new UnsupportedOperationException();
-    }
+    public void accept(Visitor visitor) {
 
-    @Override
-    public Element get(int i){
-        throw new UnsupportedOperationException();
     }
 }

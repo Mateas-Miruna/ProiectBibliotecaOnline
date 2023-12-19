@@ -1,55 +1,41 @@
 package ro.uvt.info.splabmm1.model;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Book{
-    private String title;
+@Getter
+public class Book extends Section implements Element, Visitee {
 
-    private List<Element> sections;
-    private List<Author> authors;
+    private final String title;
+    private final List<Author> authors = new ArrayList<>();
+    private final List<Section> sections = new ArrayList<>();
 
-    public Book(String title, List<Element> sections){
+    @JsonCreator
+    public Book(String title) {
+        super(title);
         this.title = title;
-
-        this.sections = sections;
     }
 
-    public void addAuthor(Author a){
-        authors.add(a);
+    public void addAuthor(Author author) {
+        authors.add(author);
     }
 
-    public Book(String title){
-        this.title =  title;
-        authors = new ArrayList<Author>();
-        sections = null;
+    public int createSection(Section section) {
+        sections.add(section);
+        return sections.indexOf(section);
     }
 
-    public int createSection(String ChapterTitle){
-        if (sections == null){
-            sections = new ArrayList<Element>();
-        }
-        Section newSection = new Section("ChapterTitle");
-        sections.add(newSection);
-        return sections.size();
+    public Section getSection(int index) {
+        return sections.get(index);
     }
 
-    public void print(){
-        System.out.println("Book: " + title);
-        System.out.println("\nAuthors: ");
-        for(Author a: authors)
-            a.print();
-        System.out.println();
-        for(Element e:sections)
-            e.print();
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitBook(this);
     }
 
-    public Element getSection(int index) {
-        return sections.get(index - 1);
-    }
-
-    public void addContent(Element paragraph) {
-        if(sections == null) sections = new ArrayList<Element>();
-        sections.add(paragraph);
-    }
 }

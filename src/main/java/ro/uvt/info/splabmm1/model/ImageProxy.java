@@ -1,39 +1,51 @@
 package ro.uvt.info.splabmm1.model;
 
-import java.util.Objects;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.NoArgsConstructor;
 
-public class ImageProxy implements Element {
-    private String imagename;
-    private Image realImage= null;
+import java.awt.*;
+@Entity
+@NoArgsConstructor(force = true)
+public class ImageProxy implements Picture, Visitee, Element {
+    private String url;
+    private Dimension dim;
+    private Image realImage;
+    @Id
+    private Long id;
 
-    public ImageProxy(String imagename) {
-        this.imagename = imagename;
+    public ImageProxy(String url) {
+        this.url = url;
+        this.realImage = null;
     }
 
-    private void loadRealImage() {
-        if (Objects.isNull(realImage)) {
-            realImage = new Image(this.imagename);
+    public Image loadImage() {
+        if (realImage == null) {
+            realImage = new Image(url);
         }
+        return realImage;
     }
 
     @Override
-    public void print() {
-        loadRealImage();
-        realImage.print();
+    public String url() {
+        return url;
     }
 
     @Override
-    public void add(Element e) {
-        throw new UnsupportedOperationException();
+    public Dimension dim() {
+        return dim;
     }
 
     @Override
-    public void removeElement(Element e) {
-        throw new UnsupportedOperationException();
+    public void accept(Visitor visitor) {
+        visitor.visitImageProxy(this);
     }
 
-    @Override
-    public Element get(int i) {
-        throw new UnsupportedOperationException();
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

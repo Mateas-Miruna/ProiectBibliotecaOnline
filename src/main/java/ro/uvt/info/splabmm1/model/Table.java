@@ -1,28 +1,35 @@
 package ro.uvt.info.splabmm1.model;
 
-public class Table implements Element {
-    private String name;
-    public Table(String name){
-        this.name = name;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.NoArgsConstructor;
+
+@Entity
+@NoArgsConstructor(force = true)
+public class Table implements Visitee, Element {
+
+    private String title;
+    @Id
+    private Long id;
+
+    public Table(String title) {
+        this.title = title;
     }
 
     @Override
-    public void print(){
-        System.out.println("Table name: " + name);
+    public void accept(Visitor visitor) {
+        visitor.visitTable(this);
     }
 
-    @Override
-    public void add(Element e) {
-        throw new UnsupportedOperationException();
+    public String getTitle() {
+        return this.title;
     }
 
-    @Override
-    public void removeElement(Element e) {
-        throw new UnsupportedOperationException();
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    @Override
-    public Element get(int i) {
-        throw new UnsupportedOperationException();
+    public Long getId() {
+        return id;
     }
 }

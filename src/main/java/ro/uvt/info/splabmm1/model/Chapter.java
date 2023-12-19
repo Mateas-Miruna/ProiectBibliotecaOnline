@@ -1,6 +1,6 @@
 package ro.uvt.info.splabmm1.model;
 
-import java.util.ArrayList;
+/*import java.util.ArrayList;
 import java.util.List;
 
 public class Chapter {
@@ -31,4 +31,4 @@ public class Chapter {
     public Subchapter getSubChapter(int index) {
         return subchapterList.get(index - 1);
     }
-}
+}*/

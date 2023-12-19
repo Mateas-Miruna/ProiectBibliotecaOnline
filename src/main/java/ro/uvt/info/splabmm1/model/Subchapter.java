@@ -1,6 +1,6 @@
 package ro.uvt.info.splabmm1.model;
 
-import ro.uvt.info.splabmm1.model.Element;
+/*import ro.uvt.info.splabmm1.model.Element;
 import ro.uvt.info.splabmm1.model.Image;
 import ro.uvt.info.splabmm1.model.Paragraph;
 import ro.uvt.info.splabmm1.model.Table;
@@ -48,4 +48,4 @@ public class Subchapter {
             System.out.println('\n');
         }
     }
-}
+}*/

@@ -1,42 +1,29 @@
 package ro.uvt.info.splabmm1.model;
 
-import ro.uvt.info.splabmm1.service.AlignLeft;
+
 import ro.uvt.info.splabmm1.service.AlignStrategy;
 
-public class Paragraph implements Element {
-    private String name;
-    private AlignStrategy align;
-    public Paragraph(String name){
-        this.name = name;
-        align = new AlignLeft();
+public class Paragraph implements Element, Visitee {
+
+    private final String text;
+    private final AlignStrategy strategy;
+    private  final Context context;
+
+    public Paragraph(String text, AlignStrategy strategy, Context context) {
+        this.text = text;
+        this.strategy = strategy;
+        this.context = context;
     }
 
+    public void setAlignStrategy() {
+        strategy.render(text, context);
+    }
     @Override
-    public void print(){
-        if(align == null)
-            System.out.println("Paragraph: " + name);
-        else
-            align.render(name);
+    public void accept(Visitor visitor) {
+        visitor.visitParagraph(this);
     }
 
-
-    @Override
-    public void add(Element e) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public void removeElement(Element e) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public Element get(int i) {
-        throw new UnsupportedOperationException();
-    }
-
-
-    public void setAlignStrategy(AlignStrategy align) {
-        this.align = align;
+    public String getText() {
+        return this.text;
     }
 }
