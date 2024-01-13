@@ -1,19 +1,19 @@
-package ro.uvt.info.splabmm1.service;
+package ro.uvt.info.splabmm1.difexample;
 
-import jakarta.servlet.*;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@Component
-@Order(2)
-@Slf4j
-public class RequestResponseLoggingFilter implements Filter {
+public class RequestResponseLoggingFilter implements Filter, jakarta.servlet.Filter {
 
+    Logger LOG = LoggerFactory.getLogger(RequestResponseLoggingFilter.class);
     @Override
     public void doFilter(
             ServletRequest request,
@@ -22,12 +22,14 @@ public class RequestResponseLoggingFilter implements Filter {
 
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
-        log.info(
+        LOG.info(
                 "Logging Request  {} : {}", req.getMethod(),
                 req.getRequestURI());
         chain.doFilter(request, response);
-        log.info(
+        LOG.info(
                 "Logging Response :{}",
                 res.getContentType());
     }
+
+
 }

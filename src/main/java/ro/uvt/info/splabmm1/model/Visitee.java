@@ -1,6 +1,8 @@
 package ro.uvt.info.splabmm1.model;
 
-public interface Visitee {
-    void accept(Visitor visitor);
 
+import java.io.IOException;
+
+public interface Visitee {
+    public void accept(Visitor visitor) throws IOException;
 }

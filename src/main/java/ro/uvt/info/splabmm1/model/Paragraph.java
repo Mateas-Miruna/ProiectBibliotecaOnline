@@ -1,29 +1,58 @@
 package ro.uvt.info.splabmm1.model;
 
 
-import ro.uvt.info.splabmm1.service.AlignStrategy;
+import lombok.Getter;
+import lombok.Setter;
+import ro.uvt.info.splabmm1.service.*;
 
-public class Paragraph implements Element, Visitee {
+public class Paragraph implements Element, Visitee{
+    @Getter
+    @Setter
+    private String text;
+    private Element parent;
+    private AlignStrategy alignStrategy;
 
-    private final String text;
-    private final AlignStrategy strategy;
-    private  final Context context;
-
-    public Paragraph(String text, AlignStrategy strategy, Context context) {
+    public Paragraph(String text) {
         this.text = text;
-        this.strategy = strategy;
-        this.context = context;
+        this.alignStrategy = new AlignLeft();
     }
 
-    public void setAlignStrategy() {
-        strategy.render(text, context);
+    @Override
+    public void add(Element element) throws Exception {
+        throw new Exception("You cannot add an element to a node element!");
     }
+
+    @Override
+    public void remove(Element element) throws Exception {
+        throw new Exception("You cannot remove an element from a leaf node!");
+    }
+
+    @Override
+    public Element get(int index) throws Exception {
+        throw new Exception("You cannot extract an element from a leaf node!");
+    }
+
+    @Override
+    public void setParent(Element parent) {
+        this.parent = parent;
+    }
+
+    @Override
+    public Element getParent() {
+        return this.parent;
+    }
+
+    public void setAlignStrategy(AlignStrategy alignStrategy) {
+        this.alignStrategy = alignStrategy;
+    }
+
     @Override
     public void accept(Visitor visitor) {
         visitor.visitParagraph(this);
     }
 
-    public String getText() {
-        return this.text;
+    @Override
+    public void print() {
+        System.out.println("Paragraph: " + "\n" + alignStrategy.render(this.text));
     }
 }

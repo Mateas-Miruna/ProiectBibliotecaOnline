@@ -1,14 +1,15 @@
 package ro.uvt.info.splabmm1.model;
 
-interface Element extends Visitee{
+import java.io.IOException;
 
-    default Element getElement(int index){
-        return this;
-    };
-    default void add(Element element) {
-        throw new UnsupportedOperationException("Cannot add element to leaf");
-    }
-    default void remove(Element element) {
-        throw new UnsupportedOperationException("Cannot remove element from leaf");
-    }
+public interface Element extends Visitee {
+    public void print() throws IOException;
+    public void add(Element element) throws Exception;
+    public void remove(Element element) throws Exception;
+    public Element get(int index) throws Exception;
+    public void setParent(Element parent);
+    public Element getParent();
+
+    @Override
+    public void accept(Visitor visitor) throws IOException;
 }

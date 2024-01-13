@@ -3,16 +3,21 @@ package ro.uvt.info.splabmm1.model;
 import lombok.Getter;
 import lombok.Setter;
 
-public class Table implements Element, Visitee{
+import java.util.ArrayList;
+
+public class TableOfContents implements Element, Visitee{
+
     @Getter
     @Setter
-    private String title;
+    private ArrayList<String> entries;
     private Element parent;
-
-    public Table(String title) {
-        this.title = title;
+    public TableOfContents() {
+        this.entries = new ArrayList<>();
     }
 
+    public void addEntry(String entry) {
+        this.entries.add(entry);
+    }
     @Override
     public void add(Element element) throws Exception {
         throw new Exception("You cannot add an element to a node element!");
@@ -40,11 +45,14 @@ public class Table implements Element, Visitee{
 
     @Override
     public void accept(Visitor visitor) {
-        visitor.visitTable(this);
+        visitor.visitTableOfContents(this);
     }
 
     @Override
     public void print() {
-        System.out.println("Table: " + this.title);
+        System.out.println("Table of Contents:");
+        for (int i = 0; i < entries.size(); i++) {
+            System.out.println(entries.get(i));
+        }
     }
 }

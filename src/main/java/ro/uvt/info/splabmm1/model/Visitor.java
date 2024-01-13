@@ -1,11 +1,12 @@
 package ro.uvt.info.splabmm1.model;
-public interface Visitor {
+import java.io.IOException;
 
-    void visitImageProxy(ImageProxy imageProxy);
-    void visitImage(Image image);
-    void visitTable(Table table);
-    void visitSection(Section section);
-    void visitTableOfContents(TableOfContent tableOfContents);
-    void visitParagraph(Paragraph paragraph);
-    void visitBook(Book book);
+public interface Visitor<T> {
+    public T visitBook(Book book);
+    public T visitSection(Section section);
+    public T visitTableOfContents(TableOfContents tableOfContents);
+    public T visitParagraph(Paragraph paragraph);
+    public T visitImageProxy(ImageProxy imageProxy) throws IOException;
+    public T visitImage(Image image);
+    public T visitTable(Table table);
 }

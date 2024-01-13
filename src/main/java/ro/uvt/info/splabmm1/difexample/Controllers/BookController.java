@@ -1,50 +1,45 @@
 package ro.uvt.info.splabmm1.difexample.Controllers;
 
-import org.springframework.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ro.uvt.info.splabmm1.model.Book;
-import ro.uvt.info.splabmm1.service.BookService;
-import ro.uvt.info.splabmm1.service.GetBooks;
-import ro.uvt.info.splabmm1.service.PostBook;
-
+import ro.uvt.info.splabmm1.model.*;
+import ro.uvt.info.splabmm1.difexample.*;
 import java.util.List;
 
-@RestController()
+@RestController
 @RequestMapping("/books")
 public class BookController {
 
     private final BookService bookService;
 
+    @Autowired
     public BookController(BookService bookService) {
         this.bookService = bookService;
     }
-    @GetMapping("/")
-    public List<Book> getBooks() {
-        var command = new GetBooks();
-        return command.execute();
+
+    @GetMapping
+    public List<Book> getAllBooks() {
+        return bookService.getAllBooks();
     }
 
     @GetMapping("/{id}")
-    public Book getBookById(@PathVariable int id) {
-        System.out.println("search by id: " + id);
-        return new Book("alt exemplu");
+    public Book getBookById(@PathVariable Long id) {
+        return bookService.getBookById(id);
     }
 
-    @PostMapping("/")
-    public Book createBook(@RequestBody Book book) {
-        var command = new PostBook(book, this.bookService);
-        return command.execute();
+    @PostMapping
+    public void createBook(@RequestBody Book book) {
+        bookService.createBook(book);
     }
 
     @PutMapping("/{id}")
-    public Book updateBook(@RequestBody Book book, @PathVariable int id) {
-        System.out.println("Update by id: " + id);
-        return new Book(book.getTitle());
+    public void updateBook(@PathVariable Long id, @RequestBody Book book) {
+        bookService.updateBook(id, book);
     }
 
     @DeleteMapping("/{id}")
-    public HttpStatus deleteBook(@PathVariable int id) {
-        System.out.println("Delete by id: " + id);
-        return HttpStatus.OK;
+    public void deleteBook(@PathVariable Long id) {
+        bookService.deleteBook(id);
     }
+
 }
